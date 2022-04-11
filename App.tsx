@@ -30,22 +30,23 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import useLoginUser from './src/hooks/useLoginUser';
 import LoginScreen from './src/screens/login/LoginScreen';
+import AppContainer from '@app/navigators/AppContainer';
 
 
 
 const App: () => Node = () => {
 
   return (
-    <View style={{
-      flex: 1
-    }}>
-      <LoginScreen />
+    <View style={styles.container}>
+      <AppContainer />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-
+  container: {
+    flex: 1
+  }
 });
 
 export default App;
