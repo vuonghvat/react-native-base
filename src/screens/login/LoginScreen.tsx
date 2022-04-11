@@ -21,14 +21,7 @@ import {
 	View,
 } from 'react-native';
 
-import {
-	Colors,
-	DebugInstructions,
-	Header,
-	LearnMoreLinks,
-	ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import useLoginUser from '../../hooks/useLoginUser';
+import useLoginUser from '@app/hooks/useLoginUser';
 
 
 
