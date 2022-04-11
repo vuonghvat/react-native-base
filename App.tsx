@@ -21,25 +21,19 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import useLoginUser from './src/hooks/useLoginUser';
-import LoginScreen from './src/screens/login/LoginScreen';
+import { Provider } from 'react-redux'
 import AppContainer from '@app/navigators/AppContainer';
+import store from '@app/reduxs/store';
 
 
 
 const App: () => Node = () => {
-
   return (
-    <View style={styles.container}>
-      <AppContainer />
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AppContainer />
+      </View>
+    </Provider>
   );
 };
 
