@@ -31,12 +31,12 @@ const LoginScreen: () => Node = () => {
     userHook.login(data)
   }
   useEffect(() => {
-    if (userHook.user) {
+    if (userHook.userData) {
       Alert.alert("login success")
     }
 
 
-  }, [userHook.user])
+  }, [userHook.userData])
 
 
   const onPress = () => {
