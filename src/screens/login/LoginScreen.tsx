@@ -1,7 +1,4 @@
-
-
-import React, { useEffect } from 'react';
-import type { Node } from 'react';
+import React, {useEffect} from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -17,40 +14,45 @@ import {
 
 import useLoginUser from '@app/hooks/useLoginUser';
 import makeActionCreator from '@app/reduxs/actionMaker';
+import { useSelector } from 'react-redux';
+import { RootState } from '@app/reduxs/store';
 
-
-
-const LoginScreen: () => Node = () => {
-  const userHook = useLoginUser()
-
-  const login = async () => {
-    const data = {
-      username: "test",
-      password: "test"
-    }
-    userHook.login(data)
-  }
+const LoginScreen = () => {
+ const {login} = useLoginUser();
+ const {user,isLoading,error} = useSelector((state: RootState) => state.loginReducer)
+  
   useEffect(() => {
-    if (userHook.userData) {
-      Alert.alert("login success")
+    if (user) {
+      Alert.alert('login success');
     }
-
-
-  }, [userHook.userData])
-
+  }, [user]);
 
   const onPress = () => {
-    login()
-  }
+    const data = {
+      username: 'test',
+      password: 'test',
+    };
+    login(data);
+  };
+  console.log("run");
+  
   return (
     <View style={styles.container}>
       <View style={styles.loginForm}>
-        <TextInput style={styles.input} placeholder='Email' />
-        <TextInput secureTextEntry style={styles.input} placeholder='Password' />
-        <TouchableOpacity {...{ onPress }} style={styles.buttonContainer}>
+        <TextInput style={styles.input} placeholder="Email" />
+        <TextInput
+          secureTextEntry
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor={"white"}
+        />
+        <TouchableOpacity {...{onPress}} style={styles.buttonContainer}>
           <Text style={styles.loginTextButton}>Login</Text>
         </TouchableOpacity>
       </View>
+      {isLoading &&  <View style={{position:"absolute", height:"100%", width:"100%", justifyContent:"center", backgroundColor:"gray"}}>
+          <ActivityIndicator /> 
+      </View>}
     </View>
   );
 };
@@ -58,37 +60,35 @@ const LoginScreen: () => Node = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   loginForm: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "80%",
-
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
   },
   input: {
     height: 40,
-    width: "100%",
+    width: '100%',
     borderRadius: 20,
-    backgroundColor: "gray",
+    backgroundColor: 'gray',
     marginTop: 10,
-    paddingHorizontal: 20
-
+    paddingHorizontal: 20,
   },
   loginTextButton: {
-    color: "white",
-    textAlign: "center"
+    color: 'white',
+    textAlign: 'center',
   },
   buttonContainer: {
-    width: "100%",
-    backgroundColor: "red",
-    justifyContent: "center",
+    width: '100%',
+    backgroundColor: 'red',
+    justifyContent: 'center',
     height: 40,
     marginTop: 15,
     borderRadius: 20,
-    paddingHorizontal: 10
-  }
+    paddingHorizontal: 10,
+  },
 });
 
 export default LoginScreen;

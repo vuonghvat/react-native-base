@@ -1,13 +1,27 @@
-import {SAVE_TOKEN} from './actions';
+import {LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR} from './actions';
 const initState = {
   user: null,
+  isLoading: false,
+  error: null,
 };
 function loginReducer(state = initState, action: any) {
   switch (action.type) {
-    case SAVE_TOKEN:
+    case LOGIN_START:
       return {
         ...state,
-        user: action.user,
+        isLoading: true,
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.data_user,
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
       };
     default:
       return state;
