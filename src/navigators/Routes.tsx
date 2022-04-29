@@ -1,4 +1,4 @@
 export default {
-    HOME: "HOME",
-    LOGIN: "LOGIN"
+    HOME: "HOME" as never,
+    LOGIN: "LOGIN" as never,
 }

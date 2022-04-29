@@ -14,45 +14,42 @@ import {
 
 import useLoginUser from '@app/hooks/useLoginUser';
 import makeActionCreator from '@app/reduxs/actionMaker';
-import { useSelector } from 'react-redux';
-import { RootState } from '@app/reduxs/store';
+import {useSelector} from 'react-redux';
+import {RootState} from '@app/reduxs/store';
 
 const LoginScreen = () => {
- const {login} = useLoginUser();
- const {user,isLoading,error} = useSelector((state: RootState) => state.loginReducer)
-  
+  const {login, user, setEmail, setPassword} = useLoginUser();
+  const onPress = () => {
+    login();
+  };
   useEffect(() => {
     if (user) {
-      Alert.alert('login success');
+      //navigate to screen
     }
   }, [user]);
-
-  const onPress = () => {
-    const data = {
-      username: 'test',
-      password: 'test',
-    };
-    login(data);
-  };
-  console.log("run");
   
   return (
     <View style={styles.container}>
       <View style={styles.loginForm}>
-        <TextInput style={styles.input} placeholder="Email" />
         <TextInput
+          onChangeText={setEmail}
+          style={styles.input}
+          placeholder="Email"
+        />
+        <TextInput
+          onChangeText={setPassword}
           secureTextEntry
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor={"white"}
+          placeholderTextColor={'white'}
         />
         <TouchableOpacity {...{onPress}} style={styles.buttonContainer}>
           <Text style={styles.loginTextButton}>Login</Text>
         </TouchableOpacity>
       </View>
-      {isLoading &&  <View style={{position:"absolute", height:"100%", width:"100%", justifyContent:"center", backgroundColor:"gray"}}>
+      {/* {isLoading &&  <View style={{position:"absolute", height:"100%", width:"100%", justifyContent:"center", backgroundColor:"gray"}}>
           <ActivityIndicator /> 
-      </View>}
+      </View>} */}
     </View>
   );
 };
