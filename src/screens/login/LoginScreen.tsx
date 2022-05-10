@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -13,21 +13,14 @@ import {
 } from 'react-native';
 
 import useLoginUser from '@app/hooks/useLoginUser';
-import makeActionCreator from '@app/reduxs/actionMaker';
-import {useSelector} from 'react-redux';
-import {RootState} from '@app/reduxs/store';
 
 const LoginScreen = () => {
-  const {login, user, setEmail, setPassword} = useLoginUser();
+  const {login, user, setEmail, setPassword, isLoading} = useLoginUser();
+
   const onPress = () => {
     login();
   };
-  useEffect(() => {
-    if (user) {
-      //navigate to screen
-    }
-  }, [user]);
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.loginForm}>
@@ -47,9 +40,18 @@ const LoginScreen = () => {
           <Text style={styles.loginTextButton}>Login</Text>
         </TouchableOpacity>
       </View>
-      {/* {isLoading &&  <View style={{position:"absolute", height:"100%", width:"100%", justifyContent:"center", backgroundColor:"gray"}}>
-          <ActivityIndicator /> 
-      </View>} */}
+      {isLoading && (
+        <View
+          style={{
+            position: 'absolute',
+            height: '100%',
+            width: '100%',
+            justifyContent: 'center',
+            backgroundColor: 'gray',
+          }}>
+          <ActivityIndicator />
+        </View>
+      )}
     </View>
   );
 };

@@ -1,12 +1,13 @@
 import {resolvePreset} from '@babel/core';
 import axios from 'axios';
 import {Alert} from 'react-native';
+import Config from 'react-native-config';
 import Url from './Url';
 const timeout = 10000;
 let isRefreshingToken = false;
 let promiseRefresh = new Promise(function (resolve, reject) {});
 const instance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com/',
+  baseURL: Config.BASE_URL,
   timeout,
 });
 const refreshToken = async () => {

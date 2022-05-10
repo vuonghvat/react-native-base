@@ -23,7 +23,7 @@ import {
 
 import { Provider } from 'react-redux'
 import AppContainer from '@app/navigators/AppContainer';
-import store from '@app/reduxs/store';
+import store from '@app/app-reduxs/store';
 import LoginScreen from '@app/screens/login/LoginScreen';
 
 
@@ -33,7 +33,6 @@ const App: () => Node = () => {
     <Provider store={store}>
       <View style={styles.container}>
         <AppContainer />
-        {/* <LoginScreen /> */}
       </View>
     </Provider>
   );
