@@ -4,9 +4,20 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "androidStg": "react-native run-android --no-jetifier --variant=stagingDebug --appId 'com.base.appid.staging'",
+    "androidDev": "react-native run-android --no-jetifier --variant=developmentDebug --appId 'com.base.appid.development'",
+    "androidPrd": "react-native run-android --no-jetifier --variant=productionDebug --appId 'com.base.appid.production'",
+    "androidReleaseDev": "cd android && rm -rf build && rm -rf android/build && cd .. && react-native run-android --no-jetifier --variant=devRelease --appId 'com.base.appid.development'",
+    "androidReleaseStg": "cd android && rm -rf build && rm -rf android/build && cd .. && react-native run-android --no-jetifier --variant=stagingRelease --appId 'com.base.appid.staging'",
+    "androidReleasePrd": "cd android && rm -rf build && rm -rf android/build && cd .. && react-native run-android --no-jetifier --variant=productionRelease --appId 'com.base.appid.production'",
+    "androidApkDev": "rm -rf build && rm -rf android/build && export ENVFILE=.env.development && cd android && ./gradlew assembleDevelopmentRelease && cd ..",
+    "androidApkStg": "rm -rf build && rm -rf android/build && export ENVFILE=.env.staging && cd android && ./gradlew assembleStagingRelease && cd ..",
+    "androidApkPrd": "rm -rf build && rm -rf android/build && export ENVFILE=.env.production && cd android && ./gradlew clean && ./gradlew assembleProductionRelease && cd ..",
+    "androidAabPrd": "rm -rf build && rm -rf android/build && export ENVFILE=.env.production && cd android && ./gradlew clean && ./gradlew bundleProductionRelease && cd ..",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "pod": "cd ios && pod install && cd ..",
     "lint": "eslint ."
   },
   "dependencies": {
