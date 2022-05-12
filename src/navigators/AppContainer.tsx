@@ -5,12 +5,11 @@ import Routes from "./Routes";
 import HomeScreen from "@app/screens/home/HomeScreen"
 import MainNavigator from "./MainNavigator";
 import AuthNavigator from "./AuthNavigator";
-import useAppHook from '@app/hooks/useAppHook';
+import useApp from '@app/hooks/useApp';
 
 const AppContainer = () => {
     const [token, setToken] = useState('')
-    const {isLoading} = useAppHook();
-    
+    const {isLoading} = useApp();
     //You can return <SplashScreen/>
     if(isLoading) return null
     return <>
