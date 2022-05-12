@@ -1,11 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   ActivityIndicator,
-  Alert,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -13,6 +8,7 @@ import {
 } from 'react-native';
 
 import useLoginUser from '@app/hooks/useLoginUser';
+import styles from './styles';
 
 const LoginScreen = () => {
   const {login, user, setEmail, setPassword, isLoading} = useLoginUser();
@@ -55,39 +51,5 @@ const LoginScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loginForm: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '80%',
-  },
-  input: {
-    height: 40,
-    width: '100%',
-    borderRadius: 20,
-    backgroundColor: 'gray',
-    marginTop: 10,
-    paddingHorizontal: 20,
-  },
-  loginTextButton: {
-    color: 'white',
-    textAlign: 'center',
-  },
-  buttonContainer: {
-    width: '100%',
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    height: 40,
-    marginTop: 15,
-    borderRadius: 20,
-    paddingHorizontal: 10,
-  },
-});
 
 export default LoginScreen;
