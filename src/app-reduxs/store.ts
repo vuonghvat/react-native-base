@@ -1,9 +1,10 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
-import {all, call, put, takeEvery, takeLatest} from 'redux-saga/effects';
-import appReducer from '@app/app-reduxs/app/reducer';
-import loginReducer from '@app/app-reduxs/login/reducer';
-import createSagaMiddleware from 'redux-saga';
-import loginSaga from './login/saga';
+import {applyMiddleware, combineReducers, createStore} from "redux";
+import {all, call, put, takeEvery, takeLatest} from "redux-saga/effects";
+import appReducer from "@app/app-reduxs/app/reducer";
+import loginReducer from "@app/app-reduxs/login/reducer";
+import createSagaMiddleware from "redux-saga";
+import loginSaga from "./login/saga";
+import {log} from "@app/utils/log";
 const sagaMiddleWare = createSagaMiddleware();
 
 function* rootSaga() {
@@ -17,9 +18,10 @@ const rootReducers = combineReducers({
 
 function logger({getState}: {getState: any}) {
   return (next: (arg0: any) => any) => (action: any) => {
-    console.log('will dispatch:', action);
+    log("will dispatch:", action);
     const returnValue = next(action);
-    console.log('state after dispatch:', getState());
+    log("state after dispatch:", getState());
+
     return returnValue;
   };
 }
