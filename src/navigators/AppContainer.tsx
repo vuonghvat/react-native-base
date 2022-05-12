@@ -8,8 +8,8 @@ import AuthNavigator from "./AuthNavigator";
 import useApp from '@app/hooks/useApp';
 
 const AppContainer = () => {
-    const [token, setToken] = useState('')
-    const {isLoading} = useApp();
+    const {isLoading,token} = useApp();
+    
     //You can return <SplashScreen/>
     if(isLoading) return null
     return <>
