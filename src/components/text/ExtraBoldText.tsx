@@ -1,12 +1,17 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, TextStyle} from 'react-native';
-type TextProps = {
+import {StyleSheet, Text, TextProps, TextStyle} from 'react-native';
+interface IProps extends TextProps {
   children?: ReactElement | any;
   style?: TextStyle | Array<TextStyle>;
-};
+}
 
-const ExtraBoldText = ({children, style}: TextProps) => {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+const ExtraBoldText = (props: IProps) => {
+  const {children, style} = props;
+  return (
+    <Text {...props} style={[styles.text, style]}>
+      {children}
+    </Text>
+  );
 };
 const styles = StyleSheet.create({
   text: {
