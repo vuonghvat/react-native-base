@@ -1,14 +1,14 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, Text, TextStyle, TextProps} from 'react-native';
+import {StyleSheet, Text, TextProps, TextStyle} from 'react-native';
 interface IProps extends TextProps {
   children?: ReactElement | any;
   style?: TextStyle | Array<TextStyle>;
-  onPress?: () => void;
 }
+
 const RegularText = (props: IProps) => {
-  const {children, style, onPress} = props;
+  const {children, style} = props;
   return (
-    <Text {...props} {...{onPress}} style={[styles.text, style]}>
+    <Text {...props} style={[styles.text, style]}>
       {children}
     </Text>
   );

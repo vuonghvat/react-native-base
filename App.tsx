@@ -6,29 +6,19 @@
  * @flow strict-local
  */
 
-import React, { useEffect } from 'react';
-import type { Node } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useEffect} from "react";
+import {StyleSheet, View} from "react-native";
 
-import { Provider } from 'react-redux'
-import AppContainer from '@app/navigators/AppContainer';
-import store from '@app/app-reduxs/store';
-import LoginScreen from '@app/screens/login/LoginScreen';
+import {Provider} from "react-redux";
+import AppContainer from "@app/navigators/AppContainer";
+import store from "@app/app-reduxs/store";
+import SplashScreen from "react-native-splash-screen";
 
+const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
-
-const App: () => Node = () => {
   return (
     <Provider store={store}>
       <View style={styles.container}>
@@ -40,8 +30,8 @@ const App: () => Node = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 export default App;
