@@ -7,7 +7,7 @@ function appReducer(state = initState, action: any) {
     case SAVE_TOKEN:
       return {
         ...state,
-        access_token: action.access_token,
+        access_token: action.data,
       };
     default:
       return state;

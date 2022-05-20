@@ -5,11 +5,10 @@ export const LOGIN_ERROR = 'LOGIN_ERROR';
 
 export const loginStartAction = makeActionCreator(
   LOGIN_START,
-  'email',
-  'password',
+  'data',
 );
-export const loginSuccessAction = makeActionCreator(LOGIN_SUCCESS, 'data_user');
-export const loginErrorAction = makeActionCreator(LOGIN_ERROR, 'error');
+export const loginSuccessAction = makeActionCreator(LOGIN_SUCCESS, 'data');
+export const loginErrorAction = makeActionCreator(LOGIN_ERROR, 'data');
 
 const LoginActions = {
   loginStartAction,

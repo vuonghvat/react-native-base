@@ -15,13 +15,13 @@ function loginReducer(state = initState, action: any) {
       return {
         ...state,
         isLoading: false,
-        user: action.data_user,
+        user: action.data,
       };
     case LOGIN_ERROR:
       return {
         ...state,
         isLoading: false,
-        error: action.error,
+        error: action.data,
       };
     default:
       return state;

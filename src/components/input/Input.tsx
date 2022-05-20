@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
-import {StyleSheet, TextStyle,TextInput} from 'react-native';
+import {StyleSheet, TextStyle,TextInput, TextInputProps} from 'react-native';
 
-type InputProps = {
+interface InputProps extends TextInputProps{
   children?: ReactElement | any;
   style?: TextStyle | Array<TextStyle>;
   placeholder?: string;

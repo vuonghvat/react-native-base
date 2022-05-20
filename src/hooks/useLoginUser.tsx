@@ -10,8 +10,6 @@ export default () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  console.log("isLoading",isLoading);
-  
   const login = async () => {
     dispatch(LoginActions.loginStartAction({email,password}));
   };

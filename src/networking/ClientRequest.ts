@@ -58,7 +58,9 @@ instance.interceptors.response.use(
           return resolve(await (await refreshToken()).data);
         });
       }
-      dataRefresh = await Promise.resolve(promiseRefresh);
+      dataRefresh = await Promise.resolve(promiseRefresh).then(() => {
+        isRefreshingToken = false;
+      });
       error.response.config.headers["Authorization"] = "Bearer " + "hihihihi";
       const newUrl = error.response.config.url.replace("aaaa", "");
       error.response.config.url = newUrl;

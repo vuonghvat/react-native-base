@@ -4,17 +4,15 @@ import {shallowEqual, useSelector, useDispatch} from "react-redux";
 import {RootState} from "@app/app-reduxs/store";
 import LoginActions from "@app/app-reduxs/login/actions";
 import SplashScreen from "react-native-splash-screen";
+import AppActions from "@app/app-reduxs/app/actions";
 export default () => {
-  const token = useSelector((state:RootState) => state.appReducer.access_token)
-  const [isLoading, setLoading] = useState(false);
-
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
+    const dispatch = useDispatch()
+  const logout = () => {
+    dispatch(AppActions.saveTokenAction(null))
+  };
+  useEffect(() => {}, []);
 
   return {
-    isLoading,
-    setLoading,
-    token,
+    logout,
   };
 };

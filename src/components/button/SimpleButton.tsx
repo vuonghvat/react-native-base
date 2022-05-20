@@ -5,11 +5,12 @@ import {
   TextStyle,
   ViewStyle,
   TouchableOpacity,
+  TouchableOpacityProps,
 } from 'react-native';
 import Colors from '@app/assets/colors/Colors';
 
 
-type ButtonProps = {
+interface ButtonProps extends TouchableOpacityProps {
   children?: ReactElement | any;
   style?: ViewStyle | Array<ViewStyle>;
   onPress?: () => void;
