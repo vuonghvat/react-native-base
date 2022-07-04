@@ -15,6 +15,9 @@ import store from "@app/app-reduxs/store";
 import SplashScreen from "react-native-splash-screen";
 
 const App = () => {
+  // useEffect(()=>{
+  //   SplashScreen.hide();
+  // },[])
   return (
     <Provider store={store}>
       <View style={styles.container}>
